@@ -3,7 +3,9 @@ var fs = require("fs");
 const os = require("os");
 const crypto = require("crypto");
 
-let clientID, userIdKey;
+let clientID,
+	userIdKey,
+	url = "http://bootstrap.production.bacalhau.org:1234";
 
 function initializeSDK() {
 	// Create config folder
@@ -41,6 +43,8 @@ function initializeSDK() {
 	// Set Client ID
 	const cI = loadClientId(userIdkeyPath);
 	clientID = cI;
+
+	return { base_url: url };
 }
 
 function loadClientId(keyPath) {
