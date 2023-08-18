@@ -82,4 +82,24 @@ async function results(jobId) {
 	}
 }
 
-module.exports = { submit, list, results };
+async function states(jobId) {
+	try {
+		const clientId = getClientId();
+
+		let body = {
+			client_id: clientId,
+			job_id: jobId,
+		};
+
+		const response = await jobApi.states(body);
+		return response.data;
+	} catch (error) {
+		if (error.response) {
+			console.log(error.response.data);
+		} else {
+			console.log(error);
+		}
+	}
+}
+
+module.exports = { submit, list, results, states };
