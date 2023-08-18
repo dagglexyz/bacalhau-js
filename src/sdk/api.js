@@ -1,3 +1,4 @@
+const { Payload } = require("../../models");
 const { JobApi } = require("../api/job");
 const {
 	getClientPublicKey,
@@ -9,8 +10,9 @@ const {
 const config = initializeSDK();
 const jobApi = new JobApi(config);
 
-async function submit(data) {
+async function submit(data = new Payload()) {
 	try {
+		data = data.toJson;
 		const clientPublicKey = getClientPublicKey(),
 			signature = signForClient(data);
 
@@ -21,7 +23,6 @@ async function submit(data) {
 		};
 
 		const response = await jobApi.submit(body);
-		console.log(response);
 
 		if (response.status === 200) {
 			return response.data;
