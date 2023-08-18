@@ -6,11 +6,25 @@ class JobApi {
 	}
 
 	async submit(body) {
+		if (!body)
+			throw Error(
+				"Missing the required parameter `body` when calling `submit`"
+			);
 		return axios.post(this.config.base_url + "/requester/submit", body);
 	}
 
 	async list(body) {
+		if (!body)
+			throw Error("Missing the required parameter `body` when calling `list`");
 		return axios.post(this.config.base_url + "/requester/list", body);
+	}
+
+	async results(body) {
+		if (!body)
+			throw Error(
+				"Missing the required parameter `body` when calling `results`"
+			);
+		return axios.post(this.config.base_url + "/requester/results", body);
 	}
 }
 

@@ -1,4 +1,4 @@
-const { submit, list } = require("./src/sdk/api");
+const { submit, list, results } = require("./src/sdk/api");
 const {
 	initializeSDK,
 	getClientPublicKey,
@@ -9,6 +9,7 @@ const {
 module.exports = {
 	submit,
 	list,
+	results,
 	initializeSDK,
 	getClientPublicKey,
 	getClientId,

@@ -41,14 +41,14 @@ async function submit(data) {
 
 async function list() {
 	try {
-		const clientID = getClientId();
+		const clientId = getClientId();
 
 		let body = {
 			sort_reverse: false,
 			sort_by: "created_at",
 			return_all: false,
 			max_jobs: 5,
-			client_id: clientID,
+			client_id: clientId,
 		};
 
 		const response = await jobApi.list(body);
@@ -62,4 +62,24 @@ async function list() {
 	}
 }
 
-module.exports = { submit, list };
+async function results(jobId) {
+	try {
+		const clientId = getClientId();
+
+		let body = {
+			client_id: clientId,
+			job_id: jobId,
+		};
+
+		const response = await jobApi.results(body);
+		return response.data;
+	} catch (error) {
+		if (error.response) {
+			console.log(error.response.data);
+		} else {
+			console.log(error);
+		}
+	}
+}
+
+module.exports = { submit, list, results };

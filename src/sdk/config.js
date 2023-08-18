@@ -5,9 +5,9 @@ const crypto = require("crypto");
 
 let clientID,
 	userIdKey,
-	url = "http://bootstrap.production.bacalhau.org:1234";
+	default_url = "http://bootstrap.production.bacalhau.org:1234";
 
-function initializeSDK() {
+function initializeSDK(url = default_url) {
 	// Create config folder
 	const homedir = os.homedir();
 	const configPath = path.join(homedir, ".bacalhau");
