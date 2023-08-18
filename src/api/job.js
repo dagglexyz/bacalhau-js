@@ -34,6 +34,14 @@ class JobApi {
 			);
 		return axios.post(this.config.base_url + "/requester/states", body);
 	}
+
+	async events(body) {
+		if (!body)
+			throw Error(
+				"Missing the required parameter `body` when calling `events`"
+			);
+		return axios.post(this.config.base_url + "/requester/events", body);
+	}
 }
 
 module.exports = { JobApi };
