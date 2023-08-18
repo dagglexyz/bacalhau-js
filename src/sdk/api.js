@@ -3,6 +3,7 @@ const {
 	getClientPublicKey,
 	signForClient,
 	initializeSDK,
+	getClientId,
 } = require("./config");
 
 const config = initializeSDK();
@@ -23,7 +24,7 @@ async function submit(data) {
 		console.log(response);
 
 		if (response.status === 200) {
-			console.log(response.data);
+			return response.data;
 		} else {
 			console.log("error: " + response.data);
 			console.log("response.statusCode: " + response.statusCode);
@@ -38,4 +39,27 @@ async function submit(data) {
 	}
 }
 
-module.exports = { submit };
+async function list() {
+	try {
+		const clientID = getClientId();
+
+		let body = {
+			sort_reverse: false,
+			sort_by: "created_at",
+			return_all: false,
+			max_jobs: 5,
+			client_id: clientID,
+		};
+
+		const response = await jobApi.list(body);
+		return response.data;
+	} catch (error) {
+		if (error.response) {
+			console.log(error.response.data);
+		} else {
+			console.log(error);
+		}
+	}
+}
+
+module.exports = { submit, list };

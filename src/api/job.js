@@ -6,12 +6,11 @@ class JobApi {
 	}
 
 	async submit(body) {
-		const response = await axios.post(
-			this.config.base_url + "/requester/submit",
-			body
-		);
+		return axios.post(this.config.base_url + "/requester/submit", body);
+	}
 
-		return response;
+	async list(body) {
+		return axios.post(this.config.base_url + "/requester/list", body);
 	}
 }
 
