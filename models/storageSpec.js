@@ -5,7 +5,7 @@ class StorageSpec {
 		name,
 		repo,
 		s3,
-		source_path,
+		StorageSource,
 		storage_source,
 		url,
 		path,
@@ -15,7 +15,7 @@ class StorageSpec {
 		this.name = name;
 		this.repo = repo;
 		this.s3 = s3;
-		this.source_path = source_path;
+		this.StorageSource = StorageSource;
 		this.storage_source = storage_source;
 		this.url = url;
 		this.path = path;
@@ -28,7 +28,7 @@ class StorageSpec {
 			name: this.name,
 			repo: this.repo,
 			s3: this.s3,
-			source_path: this.source_path,
+			StorageSource: this.StorageSource,
 			storage_source: this.storage_source,
 			url: this.url,
 			path: this.path,

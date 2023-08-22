@@ -1,3 +1,4 @@
+const { Deal } = require("./deal");
 const { JobSpecDocker } = require("./jobSpecDocker");
 const { JobSpecLanguage } = require("./jobSpecLanguage");
 const { PublisherSpec } = require("./publisherSpec");
@@ -5,7 +6,7 @@ const { PublisherSpec } = require("./publisherSpec");
 class Spec {
 	constructor({
 		annotations = [],
-		deal,
+		deal = new Deal(),
 		do_not_track = false,
 		docker = new JobSpecDocker(),
 		engine = "Docker",

@@ -1,6 +1,6 @@
 {
   "name": "@daggle/bacalhau-js",
-  "version": "0.0.1",
+  "version": "0.0.11",
   "description": "JavaScript SDK to interact with Bacalhau network.",
   "main": "index.js",
   "scripts": {
